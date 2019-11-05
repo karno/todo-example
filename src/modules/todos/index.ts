@@ -1,9 +1,10 @@
 import { ID_ADD_TODO, addTodo, AddTodoAction } from './AddTodo';
 import { ID_TOGGLE_TODO, toggleTodo, ToggleTodoAction } from './ToggleTodo';
+import { ID_DELETE_COMPLETED_TODO, deleteCompletedTodo, DeleteCompletedTodoAction } from './DeleteCompletedTodo';
 
 
 type Actions
-    = AddTodoAction | ToggleTodoAction;
+    = AddTodoAction | ToggleTodoAction | DeleteCompletedTodoAction;
 
 export type State = {
     todos: {
@@ -17,7 +18,7 @@ const init = (): State => ({
     todos: []
 });
 
-export const reducer = (state: State = init(), action: Actions) => {
+export const reducer = (state: State = init(), action: Actions): State => {
     switch (action.type) {
         case ID_ADD_TODO:
             return {
@@ -42,10 +43,15 @@ export const reducer = (state: State = init(), action: Actions) => {
                         }
                 )
             };
+        case ID_DELETE_COMPLETED_TODO:
+            return {
+                ...state,
+                todos: state.todos.filter(e =>
+                    !e.completed)
+            };
         default:
             return state;
     }
 }
 
-export const actionCreator = { addTodo, toggleTodo };
-
+export const actionCreator = { addTodo, toggleTodo, deleteCompletedTodo };

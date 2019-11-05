@@ -41,7 +41,7 @@ export interface SetVisibilityFilterAction extends Action {
     payload: SetVisibilityFilterPayload;
 }
 
-export const setVisibilityFilter = (payload: SetVisibilityFilterPayload) => ({
+export const setVisibilityFilter = (payload: SetVisibilityFilterPayload): SetVisibilityFilterAction => ({
     payload,
     type: ID_SET_VIS_FILTER
 });

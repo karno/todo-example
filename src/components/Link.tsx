@@ -1,15 +1,19 @@
 import * as React from 'react';
 
-type Props = {
-    active: boolean;
-    children: React.ReactNode;
+export type StateProps = {
+    enabled: boolean;
+}
+
+export type DispatchProps = {
     onClick: () => void;
 }
+
+type Props = StateProps & DispatchProps & { children: React.ReactNode };
 
 const component: React.FC<Props> = props => (
     <button
         onClick={props.onClick}
-        disabled={props.active}
+        disabled={!props.enabled}
         style={{
             marginLeft: '4px'
         }}

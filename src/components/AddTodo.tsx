@@ -1,32 +1,28 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-type Props = {
+export type DispatchProps = {
     onSubmit: (text: string) => void;
 };
 
-type State = {
-    value: string;
-}
+type Props = DispatchProps;
 
 const Component: React.FC<Props> = props => {
-    const [state, setState] = useState({ value: '' });
+    const [state, setState] = useState('');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
-        setState({
-            value: event.target.value,
-        });
+        setState(event.target.value);
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const text = state.value.trim();
+        const text = state.trim();
         if (text === '') {
             return;
         }
         props.onSubmit(text);
-        setState({ value: '' });
+        setState('');
     };
 
 
@@ -35,7 +31,7 @@ const Component: React.FC<Props> = props => {
             <form onSubmit={handleSubmit}>
                 <input
                     onChange={handleChange}
-                    value={state.value}
+                    value={state}
                 />
                 <button type={'submit'}>
                     Add Todo

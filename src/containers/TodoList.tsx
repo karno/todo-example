@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
 
 import { actionCreator, RootState } from '../modules';
-import TodoList from '../components/TodoList';
+import TodoList, { StateProps, DispatchProps } from '../components/TodoList';
 import { ID_SHOW_ALL, ID_SHOW_COMPLETED, ID_SHOW_ACTIVE } from '../modules/visibilityFilter/SetVisibilityFilter';
 
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = (state: RootState): StateProps => {
     const filter = () => {
         switch (state.visibilityFilter.visibility.type) {
             case ID_SHOW_ALL:
@@ -23,7 +23,7 @@ const mapStateToProps = (state: RootState) => {
     }
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
     toggleTodo: (id: number) => {
         dispatch(actionCreator.todos.toggleTodo({ id: id }));
     }

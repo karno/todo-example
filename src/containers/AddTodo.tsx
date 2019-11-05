@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
 
 import { actionCreator } from '../modules';
-import AddTodo from '../components/AddTodo';
+import AddTodo, { DispatchProps } from '../components/AddTodo';
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => ({
     onSubmit: (text: string) => {
         dispatch(actionCreator.todos.addTodo({ text }));
     }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import FilterLink from '../containers/FilterLink';
 import { showAll, showCompleted, showActive } from '../modules/visibilityFilter';
+import DeleteCompletedTodoLink from '../containers/DeleteCompletedTodoLink';
 
 const component: React.FC = () => (
     <div>
@@ -14,6 +15,9 @@ const component: React.FC = () => (
         <FilterLink filter={showCompleted()}>
             Completed
             </FilterLink>
+        <DeleteCompletedTodoLink>
+            Delete Completed
+        </DeleteCompletedTodoLink>
     </div>
 );
 

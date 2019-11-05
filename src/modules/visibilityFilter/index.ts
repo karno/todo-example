@@ -1,6 +1,7 @@
 import {
     FilterType, showAll,
-    setVisibilityFilter, SetVisibilityFilterAction, ID_SET_VIS_FILTER
+    setVisibilityFilter, SetVisibilityFilterAction,
+    ID_SET_VIS_FILTER
 } from './SetVisibilityFilter';
 
 export { showAll, showCompleted, showActive } from './SetVisibilityFilter';
@@ -17,7 +18,7 @@ const init = (): State => ({
     visibility: showAll(),
 });
 
-export const reducer = (state: State = init(), action: Actions) => {
+export const reducer = (state: State = init(), action: Actions): State => {
     switch (action.type) {
         case ID_SET_VIS_FILTER:
             return {
